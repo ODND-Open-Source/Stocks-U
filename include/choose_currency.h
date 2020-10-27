@@ -1,7 +1,6 @@
 #ifndef CHOOSECUR_H
 #define CHOOSECUR_H
 
-//Function declarations
-void showCurrencyDialog()();
-
+//Function and variable declarations
+void showCurrencyDialog();
 #endif /* CHOOSECUR_H */

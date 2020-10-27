@@ -115,6 +115,14 @@ int main(int argc, char** argv) {
 				cursinoPos1 = cursinoPos1 -1;
 			}
 		}
+		if (status.trigger & VPAD_BUTTON_A) 
+		{
+			pressedA = 1;
+		}
+		else 
+		{
+			pressedA = 0;
+		}
     /*  Clear each buffer*/
         OSScreenClearBufferEx(SCREEN_TV, back_colour);
         OSScreenClearBufferEx(SCREEN_DRC, back_colour);
@@ -122,6 +130,10 @@ int main(int argc, char** argv) {
 		if (current_page == 1) 
 		{
 			int ret1 = showCurrencyDialog(cursinoPos1, pressedA);
+			if (ret1 == 1) 
+			{
+				current_page = 2;
+			}
 		}
 		
 

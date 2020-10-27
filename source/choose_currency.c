@@ -16,8 +16,8 @@ VPADReadError error;
 bool vpad_fatal = false;
 
 int showCurrencyDialog(int cursPos, int aPressed) {
-	int returnVal = 0;
-	/*	Get pressed buttons */
+	// Declare the variable that will be returned
+	int retVal = 0;
 	// Draw to screen
 	// Message to be displayed always:
 	OSScreenPutFontEx(SCREEN_TV, 0, 0, "Welcome to StocksU!");
@@ -60,6 +60,19 @@ int showCurrencyDialog(int cursPos, int aPressed) {
 	OSScreenPutFontEx(SCREEN_DRC, 0, 6, "Press A to select.");
 	OSScreenPutFontEx(SCREEN_TV, 0, 6, "--------------------------------------");
 	OSScreenPutFontEx(SCREEN_TV, 0, 6, "Press A to select.");
-	return 0;
 	
+	switch (aPressed) 
+	{
+		case 1: 
+		{
+			retVal = 1;
+			break;
+		}
+		case 0: 
+		{
+			retVal = 0;
+			break;
+		}
+	}
+	return retVal;
 }

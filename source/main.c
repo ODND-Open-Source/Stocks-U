@@ -11,6 +11,7 @@
 #include <vpad/input.h>
 #include <sysapp/launch.h>
 #include <choose_currency.h>
+#include <menu.h>
 
 int main(int argc, char** argv) {
 	int current_page = 1;
@@ -35,7 +36,7 @@ int main(int argc, char** argv) {
 	VPADReadError error;
 	bool vpad_fatal = false;
 
-/*  Buffers*/
+    // Alocating buffer size
     size_t tvBufferSize = OSScreenGetBufferSizeEx(SCREEN_TV);
     size_t drcBufferSize = OSScreenGetBufferSizeEx(SCREEN_DRC);
     WHBLogPrintf("Will allocate 0x%X bytes for the TV, " \
@@ -135,11 +136,14 @@ int main(int argc, char** argv) {
 				current_page = 2;
 			}
 		}
-		
+		if (current_page == 2) 
+		{
+			
+		}
 
     /*  Flush all caches*/
         DCFlushRange(tvBuffer, tvBufferSize);
-        DCFlushRange(drcBuffer, drcBufferSize);
+        DCF`lushRange(drcBuffer, drcBufferSize);
 
     /*  Flip buffers*/
         OSScreenFlipBuffersEx(SCREEN_TV);

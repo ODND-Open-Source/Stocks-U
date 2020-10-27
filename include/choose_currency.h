@@ -2,5 +2,5 @@
 #define CHOOSECUR_H
 
 //Function and variable declarations
-void showCurrencyDialog(int cursPos);
+int showCurrencyDialog(int cursPos, int aPressed);
 #endif /* CHOOSECUR_H */

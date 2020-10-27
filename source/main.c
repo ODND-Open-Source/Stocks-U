@@ -9,10 +9,12 @@
 #include <whb/log.h>
 #include <whb/proc.h>
 #include <vpad/input.h>
+#include <sysapp/launch.h>
 #include <choose_currency.h>
 
 int main(int argc, char** argv) {
 	int current_page = 1;
+	int pressedA = 0;
 	int back_colour = 0x00000000;
 	int cursinoPos1 = 1;
 	//int theme_num = 1;
@@ -119,7 +121,7 @@ int main(int argc, char** argv) {
 		
 		if (current_page == 1) 
 		{
-			showCurrencyDialog(cursinoPos1);
+			int ret1 = showCurrencyDialog(cursinoPos1, pressedA);
 		}
 		
 

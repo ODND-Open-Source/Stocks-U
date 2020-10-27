@@ -15,27 +15,9 @@ VPADStatus status;
 VPADReadError error;
 bool vpad_fatal = false;
 
-void showCurrencyDialog(int cursPos) {
+int showCurrencyDialog(int cursPos, int aPressed) {
+	int returnVal = 0;
 	/*	Get pressed buttons */
-	if (status.trigger & VPAD_BUTTON_DOWN) 
-	{
-		if (cursPos > 3) {
-			cursPos = 1;
-		}
-		else {
-			cursPos++;
-		}
-	}
-	if (status.trigger & VPAD_BUTTON_UP) 
-	{
-		if (cursPos < 1) {
-			cursPos = 3;
-		}
-		else {
-			cursPos = cursPos -1;
-		}
-	}
-	
 	// Draw to screen
 	// Message to be displayed always:
 	OSScreenPutFontEx(SCREEN_TV, 0, 0, "Welcome to StocksU!");
@@ -75,5 +57,9 @@ void showCurrencyDialog(int cursPos) {
 		OSScreenPutFontEx(SCREEN_DRC, 0, 5, "<EU Euro>");
 	}
 	OSScreenPutFontEx(SCREEN_DRC, 0, 6, "--------------------------------------");
+	OSScreenPutFontEx(SCREEN_DRC, 0, 6, "Press A to select.");
 	OSScreenPutFontEx(SCREEN_TV, 0, 6, "--------------------------------------");
+	OSScreenPutFontEx(SCREEN_TV, 0, 6, "Press A to select.");
+	return 0;
+	
 }

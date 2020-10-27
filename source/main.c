@@ -12,9 +12,9 @@
 #include <choose_currency.h>
 
 int main(int argc, char** argv) {
-	
 	int current_page = 1;
 	int back_colour = 0x00000000;
+	int cursinoPos1 = 1;
 	//int theme_num = 1;
 	//int n_points = 0;
 	//int d_points = 0;
@@ -95,14 +95,31 @@ int main(int argc, char** argv) {
 		if (vpad_fatal) break;
 		
 	/*	Get pressed buttons */
-		
+		if (status.trigger & VPAD_BUTTON_DOWN) 
+		{
+			if (cursinoPos1 > 3) {
+				cursinoPos1 = 1;
+			}
+			else {
+				cursinoPos1++;
+			}
+		}
+		if (status.trigger & VPAD_BUTTON_UP) 
+		{
+			if (cursinoPos1 < 1) {
+				cursinoPos1 = 3;
+			}
+			else {
+				cursinoPos1 = cursinoPos1 -1;
+			}
+		}
     /*  Clear each buffer*/
         OSScreenClearBufferEx(SCREEN_TV, back_colour);
         OSScreenClearBufferEx(SCREEN_DRC, back_colour);
 		
 		if (current_page == 1) 
 		{
-			showCurrencyDialog();
+			showCurrencyDialog(cursinoPos1);
 		}
 		
 

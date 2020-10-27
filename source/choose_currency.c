@@ -11,15 +11,11 @@
 #include <vpad/input.h>
 #include <choose_currency.h>
 
-int cur = 0;
-int cursPos = 1;
-
 VPADStatus status;
 VPADReadError error;
 bool vpad_fatal = false;
 
-void showCurrencyDialog() {
-		
+void showCurrencyDialog(int cursPos) {
 	/*	Get pressed buttons */
 	if (status.trigger & VPAD_BUTTON_DOWN) 
 	{
@@ -30,13 +26,13 @@ void showCurrencyDialog() {
 			cursPos++;
 		}
 	}
-	if (status.trigger & VPAD_BUTTON_DOWN) 
+	if (status.trigger & VPAD_BUTTON_UP) 
 	{
-		if (cursPos > 3) {
-			cursPos = 1;
+		if (cursPos < 1) {
+			cursPos = 3;
 		}
 		else {
-			cursPos++;
+			cursPos = cursPos -1;
 		}
 	}
 	
@@ -49,22 +45,35 @@ void showCurrencyDialog() {
 	OSScreenPutFontEx(SCREEN_DRC, 0, 0, "Welcome to StocksU!");
 	OSScreenPutFontEx(SCREEN_DRC, 0, 1, "Please choose a currency:");
 	OSScreenPutFontEx(SCREEN_DRC, 0, 2, "--------------------------------------");
-	
+
 	// Drawing to the screen depending on where the "cursor" is
 	if (cursPos == 1) {
 		OSScreenPutFontEx(SCREEN_TV, 0, 3, "<Pound Sterling>");
 		OSScreenPutFontEx(SCREEN_TV, 0, 4, "US Dollar");
 		OSScreenPutFontEx(SCREEN_TV, 0, 5, "EU Euro");
+		
+		OSScreenPutFontEx(SCREEN_DRC, 0, 3, "<Pound Sterling>");
+		OSScreenPutFontEx(SCREEN_DRC, 0, 4, "US Dollar");
+		OSScreenPutFontEx(SCREEN_DRC, 0, 5, "EU Euro");
 	}
-	if (cursPos == 1) {
+	if (cursPos == 2) {
 		OSScreenPutFontEx(SCREEN_TV, 0, 3, "Pound Sterling");
 		OSScreenPutFontEx(SCREEN_TV, 0, 4, "<US Dollar>");
 		OSScreenPutFontEx(SCREEN_TV, 0, 5, "EU Euro");
+		
+		OSScreenPutFontEx(SCREEN_DRC, 0, 3, "Pound Sterling");
+		OSScreenPutFontEx(SCREEN_DRC, 0, 4, "<US Dollar>");
+		OSScreenPutFontEx(SCREEN_DRC, 0, 5, "EU Euro");
 	}
-	if (cursPos == 1) {
-		OSScreenPutFontEx(SCREEN_TV, 0, 3, "<Pound Sterling>");
+	if (cursPos == 3) {
+		OSScreenPutFontEx(SCREEN_TV, 0, 3, "Pound Sterling");
 		OSScreenPutFontEx(SCREEN_TV, 0, 4, "US Dollar");
 		OSScreenPutFontEx(SCREEN_TV, 0, 5, "<EU Euro>");
+		
+		OSScreenPutFontEx(SCREEN_DRC, 0, 3, "Pound Sterling");
+		OSScreenPutFontEx(SCREEN_DRC, 0, 4, "US Dollar");
+		OSScreenPutFontEx(SCREEN_DRC, 0, 5, "<EU Euro>");
 	}
-	OSScreenPutFontEx(SCREEN_DRC, 0, 2, "Press A when you are done.");
+	OSScreenPutFontEx(SCREEN_DRC, 0, 6, "--------------------------------------");
+	OSScreenPutFontEx(SCREEN_TV, 0, 6, "--------------------------------------");
 }

@@ -99,7 +99,7 @@ int main(int argc, char** argv) {
 	/*	Get pressed buttons */
 		if (status.trigger & VPAD_BUTTON_DOWN) 
 		{
-			if (cursinoPos1 > 3) {
+			if (cursinoPos1 = 3) {
 				cursinoPos1 = 1;
 			}
 			else {
@@ -108,7 +108,7 @@ int main(int argc, char** argv) {
 		}
 		if (status.trigger & VPAD_BUTTON_UP) 
 		{
-			if (cursinoPos1 < 1) {
+			if (cursinoPos1 = 1) {
 				cursinoPos1 = 3;
 			}
 			else {
